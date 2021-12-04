@@ -15,10 +15,7 @@ import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class Order {
@@ -38,14 +35,14 @@ public class Order {
     //配送地址
     private String address;
     //支付订单
-    private PayOrder lastPayOrder;
+    private List<PayOrder> payOrders;
+
+    public List<PayOrder> getPayOrders() {
+        return payOrders;
+    }
 
     public String getAddress() {
         return address;
-    }
-
-    public PayOrder getLastPayOrder() {
-        return lastPayOrder;
     }
 
     public Date getOrderPlaceDate() {
@@ -71,10 +68,10 @@ public class Order {
     public void payApply(String payOrderId,OrderRepository repository, PayReqParam payReqParam, CashierDeskClient cashierDeskClient){
         Assert.isTrue(orderStatus.equals(OrderStatus.NOT_PAY),"the order had paid or is closed");
         PayOrder payOrder = new PayOrder(payOrderId,payReqParam);
-        this.lastPayOrder = payOrder;
+        this.payOrders = Arrays.asList(payOrder);
         repository.savePayOrder(this);
         cashierDeskClient.payApply(this);
-        this.lastPayOrder.setPayStatus(PayStatus.IN_PROCESS);
+        payOrder.setPayStatus(PayStatus.IN_PROCESS);
         this.orderStatus = OrderStatus.IN_PROCESS;
         repository.save(this);
     }
@@ -116,7 +113,7 @@ public class Order {
 
     public void syncPayStatus(CashierDeskClient cashierDeskClient) {
         Assert.isTrue(this.orderStatus.equals(OrderStatus.IN_PROCESS));
-        Assert.notNull(this.lastPayOrder);
+        Assert.isTrue(!CollectionUtils.isEmpty(this.payOrders));
         PayResp payResp = cashierDeskClient.queryOrderPayStatus(this.orderId);
         if(PayStatus.IN_PROCESS.equals(payResp.getPayStatus())){
             return ;

@@ -2,7 +2,7 @@ package com.xiaomi.merchant.infastructure.dataobj;
 
 public class GoodsDo {
 
-    private String goodsId;
+    private String id;
 
     private String goodsName;
 
@@ -13,19 +13,19 @@ public class GoodsDo {
     @Override
     public String toString() {
         return "GoodsDo{" +
-                "goodsId='" + goodsId + '\'' +
+                "goodsId='" + id + '\'' +
                 ", goodsName='" + goodsName + '\'' +
                 ", goodsDesc='" + goodsDesc + '\'' +
                 ", price=" + price +
                 '}';
     }
 
-    public String getGoodsId() {
-        return goodsId;
+    public String getId() {
+        return id;
     }
 
-    public void setGoodsId(String goodsId) {
-        this.goodsId = goodsId;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getGoodsName() {

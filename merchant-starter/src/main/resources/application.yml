@@ -1,7 +1,16 @@
 
 spring:
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:e:/ideaProject/merchant/test
-    username: test
-    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://tj1-miui-cash-stag-db000.kscn:3310/test
+    username: zf_bj_admin
+    password: MDFlZWY4MzNkNTM3ZmU1ZTkzNGVhYmFm
+
+
+  mvc:
+    view:
+      prefix: /
+      suffix: .jsp
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

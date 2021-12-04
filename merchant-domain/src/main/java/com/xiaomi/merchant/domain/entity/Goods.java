@@ -13,6 +13,7 @@ public class Goods {
 
     private PriceFen price;
 
+
     public Goods(String goodsId, String goodsName, String goodsDesc, long price) {
         Assert.hasText(goodsId,"goodsId must not be null");
         Assert.hasText(goodsName,"goodsName must not be null");

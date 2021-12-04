@@ -27,4 +27,11 @@ public class User {
     public String getXiaomiId() {
         return xiaomiId;
     }
+
+    public User(String userId, String name, Phone phone, String xiaomiId) {
+        this.userId = userId;
+        this.name = name;
+        this.phone = phone;
+        this.xiaomiId = xiaomiId;
+    }
 }

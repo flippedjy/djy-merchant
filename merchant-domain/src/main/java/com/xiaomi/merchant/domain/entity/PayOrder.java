@@ -8,6 +8,9 @@ public class PayOrder {
     //支付订单号
     private String payOrderId;
 
+    //支付金额
+    private Long payAmount;
+
     //支付请求参数
     private PayReqParam payParam;
 
@@ -17,6 +20,13 @@ public class PayOrder {
     //支付结果参数
     private PayResp payResp;
 
+    public Long getPayAmount() {
+        return payAmount;
+    }
+
+    public void setPayAmount(Long payAmount) {
+        this.payAmount = payAmount;
+    }
 
     public String getPayOrderId() {
         return payOrderId;

@@ -1,5 +1,13 @@
 E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\repository\OrderRepositoryImpl.java
+E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\dataobj\GoodsDo.java
+E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\repository\UserRepositoryImpl.java
+E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\dao\SeqDao.java
 E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\SerialNumGenerator.java
 E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\repository\GoodsRepositoryImpl.java
-E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\repository\UserRepositoryImpl.java
+E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\dao\GoodsDao.java
+E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\dataobj\UserDo.java
 E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\client\CashierDeskClientImpl.java
+E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\dao\UserDao.java
+E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\ApplicationContextUtil.java
+E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\convert\GoodsConverter.java
+E:\ideaProject\merchant\merchant-infrastructure\src\main\java\com\xiaomi\merchant\infastructure\dao\OrderDao.java

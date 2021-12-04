@@ -4,6 +4,7 @@ E:\ideaProject\merchant\merchant-domain\src\main\java\com\xiaomi\merchant\domain
 E:\ideaProject\merchant\merchant-domain\src\main\java\com\xiaomi\merchant\domain\service\PaymentService.java
 E:\ideaProject\merchant\merchant-domain\src\main\java\com\xiaomi\merchant\domain\vo\PayResp.java
 E:\ideaProject\merchant\merchant-domain\src\main\java\com\xiaomi\merchant\domain\entity\User.java
+E:\ideaProject\merchant\merchant-domain\src\main\java\com\xiaomi\merchant\domain\service\PaymentServiceImpl.java
 E:\ideaProject\merchant\merchant-domain\src\main\java\com\xiaomi\merchant\domain\repository\GoodsRepository.java
 E:\ideaProject\merchant\merchant-domain\src\main\java\com\xiaomi\merchant\domain\constant\OrderStatus.java
 E:\ideaProject\merchant\merchant-domain\src\main\java\com\xiaomi\merchant\domain\service\OrderPayService.java

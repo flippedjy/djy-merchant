@@ -11,23 +11,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication(scanBasePackages={"com.xiaomi"})
 @MapperScan(basePackages = {"com.xiaomi.merchant.infastructure.dao"})
-public class MerchantStarterApplication implements InitializingBean {
+public class MerchantStarterApplication {
 
-    @Autowired
-    GoodsDao goodsDao;
-    @Autowired
-    SeqDao seqDao;
-    @Autowired
-    SerialNumGenerator serialNumGenerator;
 
 
     public static void main(String[] args) {
         SpringApplication.run(MerchantStarterApplication.class, args);
     }
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        String test = SerialNumGenerator.getNextSerialNum("test");
-        System.out.println(test);
-    }
 }

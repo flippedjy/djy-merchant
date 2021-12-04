@@ -15,4 +15,12 @@ public enum OrderStatus {
         this.code = code;
         this.desc = desc;
     }
+
+    public String getCode() {
+        return code;
+    }
+
+    public String getDesc() {
+        return desc;
+    }
 }
