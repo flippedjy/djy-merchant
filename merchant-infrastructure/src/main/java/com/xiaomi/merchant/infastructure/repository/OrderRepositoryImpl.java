@@ -33,13 +33,7 @@ public class OrderRepositoryImpl implements OrderRepository {
             orderDo = OrderConverter.convertToDo(order);
             orderDo.setCreateTime(new Date());
             orderDao.insert(orderDo);
-        }else{
-            orderDo.setOrderStatus(Integer.parseInt(order.getOrderStatus().getCode()));
-            orderDo.setDeliveryAddress(order.getAddress());
-            orderDao.update(orderDo);
         }
-
-
     }
 
     @Override
@@ -51,6 +45,7 @@ public class OrderRepositoryImpl implements OrderRepository {
     public Order find(String orderId) {
         List<PayOrderDo> payOrders = payOrderDao.selectByOrderId(orderId);
         OrderDo orderDo = orderDao.selectById(orderId);
-        OrderConverter.convertToDo()
+        //OrderConverter.convertToDo()
+        return null;
     }
 }

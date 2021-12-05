@@ -41,7 +41,7 @@ public class CashierDeskClientImpl implements InitializingBean,CashierDeskClient
     }
     @Override
     public PayResp payApply(Order order) {
-        PaymentService paymentService = paymentServicesMap.get(order.getLastPayOrder().getPayParam().getPayType());
+        PaymentService paymentService = paymentServicesMap.get(order.getPayOrders().get(0).getPayParam().getPayType());
         Assert.notNull(paymentService,"unsupport pay type");
         PayResp payResp = paymentService.payApply(order);
         return payResp;

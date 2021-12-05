@@ -60,7 +60,8 @@ public class PayOrder {
         this.payResp = payResp;
     }
 
-    public PayOrder(String payOrderId, PayReqParam payParam) {
+    public PayOrder(String payOrderId, PayReqParam payParam,long payAmount) {
+        this.payAmount = payAmount;
         this.payOrderId = payOrderId;
         this.payParam = payParam;
         this.payStatus = PayStatus.INIT;

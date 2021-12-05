@@ -13,7 +13,7 @@ import java.util.List;
 @Mapper
 public interface PayOrderDao {
 
-    @Insert("insert into pay_order values(#{order.payOrderId,#{order.orderId},#{order.payOrderStatus},#{order.payAmount},#{order.payTime},#{order.createTime})")
+    @Insert("insert into pay_order values(#{order.payOrderId},#{order.orderId},#{order.payOrderStatus},#{order.payAmount},#{order.payTime},#{order.createTime})")
     int insert(@Param("order")PayOrderDo payOrderDo);
 
     @Select("select * from pay_order where order_id = #{orderId}")

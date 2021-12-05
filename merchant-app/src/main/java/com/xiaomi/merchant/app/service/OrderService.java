@@ -84,7 +84,7 @@ public class OrderService {
     public Order payApply(String userId,String orderId,String deductId){
         Order order = orderRepository.find(orderId);
         User user = userRepository.find(userId);
-        orderPayService.payApply(SerialNumGenerator.getNextSerialNum("payOrder"),user,order,deductId);
+        orderPayService.payApply(SerialNumGenerator.getNextSerialNum("payOrder"),user,order);
         return order;
     }
 

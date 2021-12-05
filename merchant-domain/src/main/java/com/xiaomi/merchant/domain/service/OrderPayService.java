@@ -27,12 +27,11 @@ public class OrderPayService {
      * 支付
      * @param user
      * @param order
-     * @param deductId
      */
-    public void payApply(String payOrderId,User user, Order order, String deductId) {
+    public void payApply(String payOrderId,User user, Order order) {
         Assert.isTrue(StringUtils.equals(user.getUserId(),order.getOwnerId()),"can't pay for other people's order");
-        PayReqParam payReqParam = cashierDeskClient.queryUserDeductInfo(user.getUserId(), deductId);
-        order.payApply(payOrderId,orderRepository,payReqParam,cashierDeskClient);
+        PayReqParam payReqParam = cashierDeskClient.queryUserDeductInfo(user.getUserId(),null);
+        order.payApply(orderRepository,payReqParam,cashierDeskClient);
 
     }
 
