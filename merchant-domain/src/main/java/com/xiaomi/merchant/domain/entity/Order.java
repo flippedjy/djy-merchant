@@ -9,11 +9,13 @@ import com.xiaomi.merchant.domain.repository.OrderRepository;
 import com.xiaomi.merchant.domain.vo.PayReqParam;
 import com.xiaomi.merchant.domain.vo.PayResp;
 
+import com.xiaomi.merchant.infastructure.SerialNumGenerator;
 import com.xiaomi.merchant.type.PriceFen;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.util.Assert;
 import org.springframework.util.CollectionUtils;
+import org.springframework.util.SimpleIdGenerator;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -26,6 +28,10 @@ public class Order {
     private OrderStatus orderStatus;
     //订单商品详情
     private List<OrderLine> goodsDetail;
+    //已支付订单
+    private PayOrder paidOrder;
+    //支付金额
+    private long payAmount;
     //订单所属用户ID
     private String ownerId;
     //订单下单时间
@@ -57,6 +63,14 @@ public class Order {
         return orderId;
     }
 
+    public String getOwnerId() {
+        return ownerId;
+    }
+
+    public PayOrder getPaidOrder() {
+        return paidOrder;
+    }
+
     public OrderStatus getOrderStatus() {
         return orderStatus;
     }
@@ -65,22 +79,22 @@ public class Order {
         return goodsDetail;
     }
 
-    public void payApply(String payOrderId,OrderRepository repository, PayReqParam payReqParam, CashierDeskClient cashierDeskClient){
+    public PayOrder payApply(OrderRepository repository, PayReqParam payReqParam,
+                             CashierDeskClient cashierDeskClient){
         Assert.isTrue(orderStatus.equals(OrderStatus.NOT_PAY),"the order had paid or is closed");
-        PayOrder payOrder = new PayOrder(payOrderId,payReqParam);
+        String payOrderId = SerialNumGenerator.getNextSerialNum("payOrder");
+        PayOrder payOrder = new PayOrder(payOrderId,payReqParam,payAmount);
         this.payOrders = Arrays.asList(payOrder);
         repository.savePayOrder(this);
         cashierDeskClient.payApply(this);
         payOrder.setPayStatus(PayStatus.IN_PROCESS);
         this.orderStatus = OrderStatus.IN_PROCESS;
         repository.save(this);
+        return payOrder;
     }
 
 
 
-    public String getOwnerId() {
-        return ownerId;
-    }
 
 
 

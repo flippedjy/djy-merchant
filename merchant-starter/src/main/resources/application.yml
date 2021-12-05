@@ -1,10 +1,9 @@
-
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://tj1-miui-cash-stag-db000.kscn:3310/test
-    username: zf_bj_admin
-    password: MDFlZWY4MzNkNTM3ZmU1ZTkzNGVhYmFm
+    url: jdbc:mysql://127.0.0.1:3306/djy
+    username: root
+    password: tel2278599
 
 
   mvc:

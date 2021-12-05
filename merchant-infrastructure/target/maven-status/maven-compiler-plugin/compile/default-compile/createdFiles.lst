@@ -1,1 +1,8 @@
-com\xiaomi\merchant\infastructure\SerialNumGenerator.class
+com/xiaomi/merchant/infastructure/convert/GoodsConverter.class
+com/xiaomi/merchant/infastructure/dao/OrderDao.class
+com/xiaomi/merchant/infastructure/dao/PayOrderDao.class
+com/xiaomi/merchant/infastructure/dataobj/UserDo.class
+com/xiaomi/merchant/infastructure/dataobj/PayOrderDo.class
+com/xiaomi/merchant/infastructure/dataobj/OrderDo.class
+com/xiaomi/merchant/infastructure/convert/OrderConverter.class
+com/xiaomi/merchant/infastructure/dao/UserDao.class
