@@ -10,6 +10,7 @@ import com.xiaomi.merchant.domain.vo.PayReqParam;
 import com.xiaomi.merchant.domain.vo.PayResp;
 
 import com.xiaomi.merchant.type.PriceFen;
+import org.apache.commons.lang3.SerializationUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.time.DateUtils;
 import org.springframework.util.Assert;
@@ -65,9 +66,10 @@ public class Order {
         return goodsDetail;
     }
 
-    public void payApply(String payOrderId,OrderRepository repository, PayReqParam payReqParam, CashierDeskClient cashierDeskClient){
+    public void payApply(OrderRepository repository, PayReqParam payReqParam, CashierDeskClient cashierDeskClient){
         Assert.isTrue(orderStatus.equals(OrderStatus.NOT_PAY),"the order had paid or is closed");
-        PayOrder payOrder = new PayOrder(payOrderId,payReqParam);
+        String payOrderId = UUID.randomUUID().toString().substring(0,20);
+        PayOrder payOrder = new PayOrder(payOrderId,payReqParam,0);
         this.payOrders = Arrays.asList(payOrder);
         repository.savePayOrder(this);
         cashierDeskClient.payApply(this);
@@ -187,8 +189,8 @@ public class Order {
             Order order = new Order();
             order.orderId = this.orderId;
             order.ownerId = this.owner.getUserId();
-            Assert.isTrue(CollectionUtils.isEmpty(this.goodsDetail),"build order fail,order does not contain any goods");
-            goodsDetail.entrySet().stream().map(entry->{
+            Assert.isTrue(!CollectionUtils.isEmpty(this.goodsDetail),"build order fail,order does not contain any goods");
+            order.goodsDetail = goodsDetail.entrySet().stream().map(entry->{
                 OrderLine orderLine = new OrderLine();
                 orderLine.goodsId = entry.getKey();
                 orderLine.count = entry.getValue();

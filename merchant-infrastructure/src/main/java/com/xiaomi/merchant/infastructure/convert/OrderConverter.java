@@ -17,6 +17,7 @@ public class OrderConverter {
         orderDo.setOrderStatus(Integer.parseInt(order.getOrderStatus().getCode()));
         orderDo.setDeliveryAddress(order.getAddress());
         orderDo.setExpireTime(order.getOrderExpireDate());
+        orderDo.setOwnerId(order.getOwnerId());
         orderDo.setOrderDetail(new GsonBuilder().create().toJson(order.getGoodsDetail()));
         return orderDo;
     }

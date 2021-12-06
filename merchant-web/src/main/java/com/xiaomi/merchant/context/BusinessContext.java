@@ -4,6 +4,6 @@ public class BusinessContext {
 
 
     public static String getUserId(){
-        return "";
+        return "1";
     }
 }
