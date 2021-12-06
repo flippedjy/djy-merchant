@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
-import sun.tools.java.ClassPath;
 
 @SpringBootApplication(scanBasePackages={"com.xiaomi"})
 @MapperScan(basePackages = {"com.xiaomi.merchant.infastructure.dao"})
