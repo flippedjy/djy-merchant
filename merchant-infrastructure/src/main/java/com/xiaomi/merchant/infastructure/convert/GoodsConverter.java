@@ -1,7 +1,6 @@
 package com.xiaomi.merchant.infastructure.convert;
 
-import com.xiaomi.merchant.domain.entity.Goods;
-import com.xiaomi.merchant.infastructure.dao.GoodsDao;
+import com.xiaomi.merchant.domain.vo.Goods;
 import com.xiaomi.merchant.infastructure.dataobj.GoodsDo;
 
 public class GoodsConverter {

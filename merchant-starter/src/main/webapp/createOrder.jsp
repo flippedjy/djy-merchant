@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1>订单确认</h1>
-<form action="/preOrder" method="get">
+<form action="/place" method="get">
     <table>
         <tbody>
     <c:forEach items="${goods}" var="item">

@@ -3,14 +3,15 @@ package com.xiaomi.merchant.controller;
 
 import com.xiaomi.merchant.app.service.OrderService;
 import com.xiaomi.merchant.context.BusinessContext;
-import com.xiaomi.merchant.domain.entity.Goods;
+import com.xiaomi.merchant.domain.vo.Goods;
+import com.xiaomi.merchant.domain.entity.Order;
 import com.xiaomi.merchant.domain.entity.User;
 import com.xiaomi.merchant.domain.repository.GoodsRepository;
 import com.xiaomi.merchant.domain.repository.UserRepository;
+import com.xiaomi.merchant.domain.vo.PayInfo;
 import com.xiaomi.merchant.domain.vo.PayReqParam;
-import com.xiaomi.merchant.dto.PlaceOrderReq;
+import com.xiaomi.merchant.infastructure.QrCodeUtil;
 import com.xiaomi.merchant.infastructure.client.CashierDeskClientImpl;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -37,11 +38,28 @@ public class OrderController {
     private GoodsRepository goodsRepository;
 
 
-    @GetMapping ("/preOrder")
-    public Object preOrder(@RequestParam String address ,@RequestParam List<String> goodsId,@RequestParam Long totalPrice){
+    @GetMapping ("/place")
+    public Object preOrder(@RequestParam String address ,@RequestParam List<String> goodsId){
 
         Map<String, Integer> orderDetail = goodsId.stream().collect(Collectors.toMap(String::toString, (s) -> 1));
-        return orderService.placeOrder(BusinessContext.getUserId(),orderDetail,totalPrice);
+        Order order = orderService.placeOrder(BusinessContext.getUserId(), orderDetail);
+        ModelAndView mav = new ModelAndView();
+        mav.addObject(order);
+        mav.addObject("orderId",order.getOrderId());
+        mav.addObject("totalPrice",order.getTotalPrice());
+        mav.setViewName("pay");
+        return mav;
+    }
+
+    @GetMapping ("/doPay")
+    public Object doPay(@RequestParam String orderId,@RequestParam long amount,String payType){
+        System.out.println(orderId+":"+amount+":"+payType);
+        PayInfo payInfo = orderService.payApply(BusinessContext.getUserId(), orderId, payType);
+        String url = payInfo.getUrl();
+        ModelAndView mav = new ModelAndView();
+        mav.addObject("qrcodePath", QrCodeUtil.getQrCodeImg(url));
+        mav.setViewName("qrCode");
+        return mav;
     }
 
     @GetMapping("/createOrder")

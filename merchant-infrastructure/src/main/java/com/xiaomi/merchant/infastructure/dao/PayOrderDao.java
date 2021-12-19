@@ -19,4 +19,7 @@ public interface PayOrderDao {
     @Select("select * from pay_order where order_id = #{orderId}")
     List<PayOrderDo> selectByOrderId(@Param("orderId") String orderId);
 
+    @Select("select * from pay_order where pay_order_id = #{payOrderId}")
+    PayOrderDo selectByPayOrderId(@Param("payOrderId") String payOrderId);
+
 }

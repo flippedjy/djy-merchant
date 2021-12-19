@@ -18,16 +18,31 @@ public class PayOrderDo {
     private String payParam;
 
     //支付状态
-    private String payStatus;
+    private String payOrderStatus;
 
     //支付金额
     private Long payAmount;
 
-    //支付结果参数
-    private PayResp payResp;
-
     //创建时间
     private Date createTime;
+
+    private Date payTime;
+
+    public Date getPayTime() {
+        return payTime;
+    }
+
+    public void setPayTime(Date payTime) {
+        this.payTime = payTime;
+    }
+
+    public String getOrderId() {
+        return orderId;
+    }
+
+    public void setOrderId(String orderId) {
+        this.orderId = orderId;
+    }
 
     public String getPayOrderId() {
         return payOrderId;
@@ -45,12 +60,12 @@ public class PayOrderDo {
         this.payParam = payParam;
     }
 
-    public String getPayStatus() {
-        return payStatus;
+    public String getPayOrderStatus() {
+        return payOrderStatus;
     }
 
-    public void setPayStatus(String payStatus) {
-        this.payStatus = payStatus;
+    public void setPayOrderStatus(String payOrderStatus) {
+        this.payOrderStatus = payOrderStatus;
     }
 
     public Long getPayAmount() {
@@ -59,14 +74,6 @@ public class PayOrderDo {
 
     public void setPayAmount(Long payAmount) {
         this.payAmount = payAmount;
-    }
-
-    public PayResp getPayResp() {
-        return payResp;
-    }
-
-    public void setPayResp(PayResp payResp) {
-        this.payResp = payResp;
     }
 
     public Date getCreateTime() {

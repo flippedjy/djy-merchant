@@ -2,6 +2,7 @@ package com.xiaomi.merchant.infastructure.client;
 
 import com.xiaomi.merchant.domain.client.CashierDeskClient;
 import com.xiaomi.merchant.domain.entity.Order;
+import com.xiaomi.merchant.domain.entity.PayOrder;
 import com.xiaomi.merchant.domain.service.PaymentService;
 import com.xiaomi.merchant.domain.vo.PayReqParam;
 import com.xiaomi.merchant.domain.vo.PayResp;
@@ -40,10 +41,11 @@ public class CashierDeskClientImpl implements InitializingBean,CashierDeskClient
         paymentServices.stream().forEach(paymentService -> paymentServicesMap.put(paymentService.getPayType(),paymentService));
     }
     @Override
-    public PayResp payApply(Order order) {
-        PaymentService paymentService = paymentServicesMap.get(order.getPayOrders().get(0).getPayParam().getPayType());
+    public PayResp payApply(PayOrder payOrder) {
+        Assert.notNull(payOrder,"请先创建支付订单");
+        PaymentService paymentService = paymentServicesMap.get(payOrder.getPayParam().getPayType());
         Assert.notNull(paymentService,"unsupport pay type");
-        PayResp payResp = paymentService.payApply(order);
+        PayResp payResp = paymentService.payApply(payOrder);
         return payResp;
     }
     @Override

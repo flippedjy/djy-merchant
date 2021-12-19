@@ -1,5 +1,7 @@
 package com.xiaomi.merchant.domain.constant;
 
+import java.util.Arrays;
+
 public enum OrderStatus {
 
     IN_PROCESS("1","支付处理中"),
@@ -14,6 +16,10 @@ public enum OrderStatus {
     OrderStatus(String code, String desc) {
         this.code = code;
         this.desc = desc;
+    }
+
+    public static OrderStatus findByCode(String code){
+        return Arrays.stream(OrderStatus.values()).filter(status->code.equals(status.getCode())).findFirst().orElse(null);
     }
 
     public String getCode() {

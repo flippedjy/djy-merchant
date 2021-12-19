@@ -1,4 +1,4 @@
-package com.xiaomi.merchant.domain.entity;
+package com.xiaomi.merchant.domain.vo;
 
 import com.xiaomi.merchant.type.PriceFen;
 import org.springframework.util.Assert;

@@ -6,7 +6,6 @@ public interface OrderRepository {
 
     void save(Order order);
 
-    void savePayOrder(Order order);
 
     Order find(String orderId);
 }

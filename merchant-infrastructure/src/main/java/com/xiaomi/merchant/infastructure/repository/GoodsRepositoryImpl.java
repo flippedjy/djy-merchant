@@ -1,6 +1,6 @@
 package com.xiaomi.merchant.infastructure.repository;
 
-import com.xiaomi.merchant.domain.entity.Goods;
+import com.xiaomi.merchant.domain.vo.Goods;
 import com.xiaomi.merchant.domain.repository.GoodsRepository;
 import com.xiaomi.merchant.infastructure.convert.GoodsConverter;
 import com.xiaomi.merchant.infastructure.dao.GoodsDao;
